@@ -1,5 +1,5 @@
-import { createPinia } from 'pinia'
+import { defineStore } from 'pinia'
 
-const pinia = createPinia()
+const indexStore = defineStore('index', () => {})
 
-export default pinia
+export default indexStore

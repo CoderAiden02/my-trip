@@ -1,6 +1,9 @@
 <script setup>
 import homeNavBarVue from './cpns/home-nav-bar.vue';
 import homeSerchBoxVue from './cpns/home-serch-box.vue';
+import useHomeStore from '@/stores/modules/home'
+const homeStore = useHomeStore()
+homeStore.fetchHotSuggests()
 </script>
 
 <template>
