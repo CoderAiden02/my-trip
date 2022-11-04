@@ -2,9 +2,17 @@
   --primary-color: #ff9854;
   --van-search-left-icon-color: var(--primary-color) !important;
   --line-color: #faf8f9;
+  --van-primary-color: var(--primary-color);
   --theme-linear-gradient: linear-gradient(90deg, #fa8c1d, #fcaf3f);
 }
 
 .bottom-gray-line {
   border-bottom: 1px solid var(--line-color);
+}
+
+.icon_check {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: url(../img/detail/icon_check.png) 0 0 / 100% 100%;
 }

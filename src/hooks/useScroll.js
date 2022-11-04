@@ -1,25 +1,33 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import { throttle } from 'underscore'
 
-export default function useScroll() {
+export default function useScroll(elRef) {
+  let el = window
   const isReachBottom = ref(false)
   const clientHeight = ref(0)
   const scrollTop = ref(0)
   const scrollHeight = ref(0)
   const scrollListenerHander = throttle(() => {
-    clientHeight.value = document.documentElement.clientHeight
-    scrollTop.value = document.documentElement.scrollTop
-    scrollHeight.value = document.documentElement.scrollHeight
+    if (el === window) {
+      clientHeight.value = document.documentElement.clientHeight
+      scrollTop.value = document.documentElement.scrollTop
+      scrollHeight.value = document.documentElement.scrollHeight
+    } else {
+      clientHeight.value = el.clientHeight
+      scrollTop.value = el.scrollTop
+      scrollHeight.value = el.scrollHeight
+    }
     if (Math.ceil(clientHeight.value + scrollTop.value) >= scrollHeight.value) {
       isReachBottom.value = true
     }
-  }, 300)
+  }, 100)
 
   onMounted(() => {
-    window.addEventListener('scroll', scrollListenerHander)
+    if (elRef) el = elRef.value
+    el.addEventListener('scroll', scrollListenerHander)
   })
   onUnmounted(() => {
-    window.removeEventListener('scroll', scrollListenerHander)
+    el.removeEventListener('scroll', scrollListenerHander)
   })
   return { isReachBottom, scrollHeight, scrollTop, clientHeight }
 }
