@@ -65,28 +65,28 @@ const tabClick = (index) => {
 
 
 // 页面滚动, 滚动时匹配对应的tabControll的index
-// const tabControlRef = ref()
-// watch(scrollTop, (newValue) => {
-//   if (newValue === currentDistance) {
-//     isClick = false
-//   }
-//   if (isClick) return
+const tabControlRef = ref()
+watch(scrollTop, (newValue) => {
+  if (newValue === currentDistance) {
+    isClick = false
+  }
+  if (isClick) return
 
-//   // 1.获取所有的区域的offsetTops
-//   const els = Object.values(sectionEls.value)
-//   const values = els.map(el => el.offsetTop)
+  // 1.获取所有的区域的offsetTops
+  const els = Object.values(sectionEls.value)
+  const values = els.map(el => el.offsetTop)
 
-//   // 2.根据newValue去匹配想要索引
-//   let index = values.length - 1
-//   for (let i = 0; i < values.length; i++) {
-//     if (values[i] > newValue + 44) {
-//       index = i - 1
-//       break
-//     }
-//   }
-//   // console.log(index)
-//   tabControlRef.value?.setCurrentIndex(index)
-// })
+  // 2.根据newValue去匹配想要索引
+  let index = values.length - 1
+  for (let i = 0; i < values.length; i++) {
+    if (values[i] > newValue + 44) {
+      index = i - 1
+      break
+    }
+  }
+  // console.log(index)
+  tabControlRef.value?.setCurrentIndex(index)
+})
 
 </script>
 
